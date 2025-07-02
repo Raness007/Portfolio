@@ -64,19 +64,19 @@ export function HeroSection() {
         ))}
       </div>
 
-      {/* Gentle Parallax Background */}
+      {/* Ultra-Slow Gentle Parallax Background */}
       <motion.div
         className="absolute inset-0"
         style={{
           background: 'radial-gradient(circle at 50% 50%, rgba(253, 184, 19, 0.1) 0%, transparent 50%)',
         }}
         animate={{
-          backgroundPosition: `${mousePosition.x / 200}px ${mousePosition.y / 200}px`,
+          backgroundPosition: `${mousePosition.x / 1000}px ${mousePosition.y / 1000}px`,
         }}
-        transition={{ type: 'spring', damping: 50, stiffness: 100 }}
+        transition={{ type: 'spring', damping: 100, stiffness: 50 }}
       />
 
-      {/* Cosmic Vortex Effects */}
+      {/* Ultra-Slow Cosmic Vortex Effects */}
       <div className="absolute inset-0">
         {Array.from({ length: 3 }).map((_, i) => (
           <div
@@ -85,30 +85,30 @@ export function HeroSection() {
             style={{
               left: `${20 + i * 30}%`,
               top: `${20 + i * 20}%`,
-              animationDelay: `${i * 2}s`,
+              animationDelay: `${i * 5}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Cosmic Dust Clouds */}
+      {/* Ultra-Slow Cosmic Dust Clouds */}
       <div className="absolute inset-0">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
             className="cosmic-dust"
             style={{
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 20}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
+              animationDelay: `${Math.random() * 60}s`,
+              animationDuration: `${60 + Math.random() * 30}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Floating Planets */}
+      {/* Ultra-Slow Floating Planets */}
       <div className="absolute inset-0">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-8 h-8 rounded-full"
@@ -119,38 +119,38 @@ export function HeroSection() {
               boxShadow: `0 0 25px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}`,
             }}
             animate={{
-              y: [0, -30, 0],
-              x: [0, 15, 0],
+              y: [0, -15, 0],
+              x: [0, 8, 0],
               rotate: [0, 360],
-              scale: [1, 1.2, 1],
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              duration: 15 + Math.random() * 10,
+              duration: 40 + Math.random() * 20,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: Math.random() * 10,
             }}
           />
         ))}
       </div>
 
-      {/* Energy Waves */}
+      {/* Ultra-Slow Energy Waves */}
       <div className="absolute inset-0">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
             className="energy-wave"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 1.2}s`,
+              animationDelay: `${i * 3}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Constellation Lines */}
+      {/* Ultra-Slow Constellation Lines */}
       <div className="absolute inset-0">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
             className="constellation-line"
@@ -159,22 +159,23 @@ export function HeroSection() {
               top: `${Math.random() * 80}%`,
               width: `${50 + Math.random() * 100}px`,
               transform: `rotate(${Math.random() * 360}deg)`,
-              animationDelay: `${Math.random() * 4}s`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: '8s',
             }}
           />
         ))}
       </div>
 
-      {/* Cosmic Lightning */}
+      {/* Ultra-Slow Cosmic Lightning */}
       <div className="absolute inset-0">
-        {Array.from({ length: 6 }).map((_, i) => (
+        {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
             className="cosmic-lightning"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 80}%`,
-              animationDelay: `${Math.random() * 3}s`,
+              animationDelay: `${Math.random() * 8}s`,
             }}
           />
         ))}
