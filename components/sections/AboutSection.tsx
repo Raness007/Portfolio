@@ -42,8 +42,12 @@ export function AboutSection() {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+      {/* Cosmic Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -53,10 +57,10 @@ export function AboutSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            About <span className="gradient-text">Me</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            About <span className="cosmic-gradient-text">Me</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             I'm a passionate developer and designer who loves creating digital experiences 
             that make a difference. With a keen eye for detail and a love for clean code.
           </p>
@@ -72,20 +76,20 @@ export function AboutSection() {
           >
             <div className="relative">
               <motion.div
-                className="w-80 h-80 mx-auto rounded-full glass overflow-hidden"
+                className="w-80 h-80 mx-auto rounded-full cosmic-glass overflow-hidden cosmic-float"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', damping: 20 }}
               >
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent" />
+                <div className="w-full h-full bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500" />
                 </div>
               </motion.div>
               
-              {/* Floating Elements */}
+              {/* Floating Tech Stack */}
               {techStack.slice(0, 6).map((tech, index) => (
                 <motion.div
                   key={tech}
-                  className="absolute bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium"
+                  className="absolute cosmic-glass px-3 py-1 rounded-full text-sm font-medium text-white/80"
                   style={{
                     top: `${20 + Math.sin(index) * 60}%`,
                     left: `${20 + Math.cos(index) * 60}%`,
@@ -113,16 +117,16 @@ export function AboutSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div>
-                <div className="text-3xl font-bold gradient-text">{counters.experience}+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-3xl font-bold cosmic-gradient-text">{counters.experience}+</div>
+                <div className="text-sm text-white/60">Years Experience</div>
               </div>
               <div>
-                <div className="text-3xl font-bold gradient-text">{counters.projects}+</div>
-                <div className="text-sm text-muted-foreground">Projects Completed</div>
+                <div className="text-3xl font-bold cosmic-gradient-text">{counters.projects}+</div>
+                <div className="text-sm text-white/60">Projects Completed</div>
               </div>
               <div>
-                <div className="text-3xl font-bold gradient-text">{counters.clients}+</div>
-                <div className="text-sm text-muted-foreground">Happy Clients</div>
+                <div className="text-3xl font-bold cosmic-gradient-text">{counters.clients}+</div>
+                <div className="text-sm text-white/60">Happy Clients</div>
               </div>
             </motion.div>
           </motion.div>
@@ -135,7 +139,7 @@ export function AboutSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6">Skills & Expertise</h3>
+              <h3 className="text-2xl font-bold mb-6 text-white">Skills & Expertise</h3>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
                   <motion.div
@@ -147,14 +151,14 @@ export function AboutSection() {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <skill.icon size={20} className="text-primary" />
-                        <span className="font-medium">{skill.name}</span>
+                        <skill.icon size={20} className="text-yellow-400" />
+                        <span className="font-medium text-white">{skill.name}</span>
                       </div>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                      <span className="text-sm text-white/60">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                        className="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1.5, delay: 0.8 + index * 0.2 }}
@@ -166,12 +170,12 @@ export function AboutSection() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold mb-6">Tech Stack</h3>
+              <h3 className="text-2xl font-bold mb-6 text-white">Tech Stack</h3>
               <div className="flex flex-wrap gap-3">
                 {techStack.map((tech, index) => (
                   <motion.span
                     key={tech}
-                    className="px-4 py-2 bg-card/50 backdrop-blur-sm rounded-full text-sm font-medium border border-border/50 hover:border-primary/50 transition-colors interactive"
+                    className="px-4 py-2 cosmic-glass rounded-full text-sm font-medium border border-yellow-500/30 hover:border-yellow-500/50 transition-colors interactive text-white/80 hover:text-yellow-400"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.4, delay: 0.8 + index * 0.05 }}
@@ -188,7 +192,7 @@ export function AboutSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
-              <Button className="group interactive">
+              <Button className="group interactive bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400">
                 Download My Resume
                 <motion.div
                   className="ml-2"

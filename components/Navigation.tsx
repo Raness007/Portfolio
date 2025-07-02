@@ -25,31 +25,31 @@ export function Navigation() {
 
   return (
     <>
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation - Centered Top */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden md:block ${
-          scrollY > 50 ? 'glass backdrop-blur-md' : 'bg-transparent'
+        className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 hidden md:block ${
+          scrollY > 50 ? 'cosmic-glass backdrop-blur-md' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+        <div className="px-8 py-4 rounded-full border border-yellow-500/30">
+          <div className="flex items-center space-x-8">
             <motion.div
-              className="text-2xl font-bold gradient-text"
+              className="text-2xl font-bold cosmic-gradient-text mr-4"
               whileHover={{ scale: 1.05 }}
             >
               AJ
             </motion.div>
 
             {/* Desktop Menu */}
-            <div className="flex space-x-8">
+            <div className="flex space-x-6">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-2 text-sm font-medium hover:text-primary transition-colors interactive"
-                  whileHover={{ y: -2 }}
+                  className="flex items-center space-x-2 text-sm font-medium text-white/80 hover:text-yellow-400 transition-colors interactive"
+                  whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ y: 0 }}
                 >
                   <item.icon size={16} />
@@ -61,13 +61,13 @@ export function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation - Bottom Center */}
+      {/* Mobile Navigation - Centered Bottom */}
       <motion.nav
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
       >
-        <div className="glass backdrop-blur-md rounded-full px-6 py-3 border border-border/50">
+        <div className="cosmic-glass backdrop-blur-md rounded-full px-6 py-3 border border-yellow-500/30">
           <div className="flex items-center space-x-1">
             {/* Mobile Menu Items */}
             {!isOpen ? (
@@ -76,7 +76,7 @@ export function Navigation() {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="p-3 rounded-full hover:bg-white/10 transition-colors interactive"
+                    className="p-3 rounded-full hover:bg-white/10 transition-colors interactive text-white/80 hover:text-yellow-400"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -84,7 +84,7 @@ export function Navigation() {
                   </motion.a>
                 ))}
                 <motion.button
-                  className="p-3 rounded-full hover:bg-white/10 transition-colors interactive"
+                  className="p-3 rounded-full hover:bg-white/10 transition-colors interactive text-white/80 hover:text-yellow-400"
                   onClick={() => setIsOpen(true)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -98,7 +98,7 @@ export function Navigation() {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="p-3 rounded-full hover:bg-white/10 transition-colors interactive"
+                    className="p-3 rounded-full hover:bg-white/10 transition-colors interactive text-white/80 hover:text-yellow-400"
                     onClick={() => setIsOpen(false)}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -110,7 +110,7 @@ export function Navigation() {
                   </motion.a>
                 ))}
                 <motion.button
-                  className="p-3 rounded-full hover:bg-white/10 transition-colors interactive"
+                  className="p-3 rounded-full hover:bg-white/10 transition-colors interactive text-white/80 hover:text-yellow-400"
                   onClick={() => setIsOpen(false)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

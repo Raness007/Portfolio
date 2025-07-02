@@ -101,7 +101,12 @@ export function GallerySection() {
 
   return (
     <section id="gallery" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5" />
+      {/* Cosmic Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-40 right-10 w-48 h-48 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-10 left-10 w-36 h-36 bg-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/4 left-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }} />
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -111,10 +116,10 @@ export function GallerySection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Creative <span className="gradient-text">Gallery</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            Creative <span className="cosmic-gradient-text">Gallery</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             A collection of my creative work spanning design, digital art, and photography
           </p>
         </motion.div>
@@ -132,8 +137,8 @@ export function GallerySection() {
               onClick={() => setFilter(category)}
               className={`px-6 py-3 rounded-full font-medium transition-all interactive ${
                 filter === category
-                  ? 'bg-primary text-primary-foreground glow'
-                  : 'bg-card/50 backdrop-blur-sm hover:bg-card/80'
+                  ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white cosmic-glow'
+                  : 'cosmic-glass text-white/80 hover:text-yellow-400 border border-yellow-500/30'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -160,7 +165,7 @@ export function GallerySection() {
                 className="break-inside-avoid mb-6 group cursor-pointer interactive"
                 onClick={() => setSelectedImage(item.id)}
               >
-                <div className="relative overflow-hidden rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all duration-300">
+                <div className="relative overflow-hidden rounded-2xl cosmic-glass border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300">
                   <motion.img
                     src={item.image}
                     alt={item.title}
@@ -262,7 +267,7 @@ export function GallerySection() {
                         transition={{ delay: 0.2 }}
                       >
                         <h3 className="text-2xl font-bold mb-2">{selectedItem.title}</h3>
-                        <p className="text-muted-foreground mb-2">{selectedItem.category}</p>
+                        <p className="text-white/60 mb-2">{selectedItem.category}</p>
                         <p className="text-sm opacity-80">{selectedItem.description}</p>
                       </motion.div>
                     </div>
@@ -280,7 +285,7 @@ export function GallerySection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Button size="lg" variant="outline" className="interactive">
+          <Button size="lg" variant="outline" className="interactive border-yellow-500/50 text-white hover:bg-yellow-500/10">
             View Full Portfolio
             <motion.span
               className="ml-2 inline-block"

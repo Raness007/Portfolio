@@ -81,7 +81,12 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5" />
+      {/* Cosmic Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 right-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-40 left-20 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-1/3 right-1/3 w-28 h-28 bg-pink-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -91,10 +96,10 @@ export function ProjectsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Featured <span className="gradient-text">Projects</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            Featured <span className="cosmic-gradient-text">Projects</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             A showcase of my latest work, featuring innovative solutions and creative implementations
           </p>
         </motion.div>
@@ -112,8 +117,8 @@ export function ProjectsSection() {
               onClick={() => setFilter(category)}
               className={`px-6 py-3 rounded-full font-medium transition-all interactive ${
                 filter === category
-                  ? 'bg-primary text-primary-foreground glow'
-                  : 'bg-card/50 backdrop-blur-sm hover:bg-card/80'
+                  ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white cosmic-glow'
+                  : 'cosmic-glass text-white/80 hover:text-yellow-400 border border-yellow-500/30'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -138,7 +143,7 @@ export function ProjectsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-card/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 card-hover interactive"
+                className="group relative cosmic-glass rounded-2xl overflow-hidden border border-yellow-500/30 hover:border-yellow-500/50 cosmic-card-hover interactive"
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
@@ -158,7 +163,7 @@ export function ProjectsSection() {
                     <div className="flex space-x-4">
                       <motion.a
                         href={project.liveUrl}
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors interactive"
+                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors interactive text-white"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -166,7 +171,7 @@ export function ProjectsSection() {
                       </motion.a>
                       <motion.a
                         href={project.githubUrl}
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors interactive"
+                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors interactive text-white"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -179,17 +184,17 @@ export function ProjectsSection() {
                 {/* Project Content */}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm text-primary font-medium">
+                    <span className="text-sm text-yellow-400 font-medium">
                       {project.category}
                     </span>
-                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
                     {project.title}
                   </h3>
                   
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                  <p className="text-white/60 text-sm mb-4 line-clamp-2">
                     {project.description}
                   </p>
 
@@ -198,7 +203,7 @@ export function ProjectsSection() {
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-muted/50 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-white/10 rounded text-xs font-medium text-white/80"
                       >
                         {tech}
                       </span>
@@ -207,11 +212,11 @@ export function ProjectsSection() {
 
                   {/* Action Buttons */}
                   <div className="flex space-x-3">
-                    <Button size="sm" className="flex-1 interactive">
+                    <Button size="sm" className="flex-1 interactive bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400">
                       <ExternalLink size={14} className="mr-2" />
                       Live Demo
                     </Button>
-                    <Button size="sm" variant="outline" className="flex-1 interactive">
+                    <Button size="sm" variant="outline" className="flex-1 interactive border-yellow-500/50 text-white hover:bg-yellow-500/10">
                       <Github size={14} className="mr-2" />
                       Code
                     </Button>
@@ -219,7 +224,7 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -232,7 +237,7 @@ export function ProjectsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Button size="lg" variant="outline" className="interactive">
+          <Button size="lg" variant="outline" className="interactive border-yellow-500/50 text-white hover:bg-yellow-500/10">
             View All Projects
             <motion.span
               className="ml-2 inline-block"

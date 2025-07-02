@@ -62,14 +62,19 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
+      {/* Cosmic Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 left-10 w-52 h-52 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 right-1/4 w-36 h-36 bg-pink-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
       
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-primary/30 rounded-full"
+            className="absolute w-2 h-2 bg-yellow-400/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -95,10 +100,10 @@ export function ContactSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Let's <span className="gradient-text">Connect</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            Let's <span className="cosmic-gradient-text">Connect</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </motion.div>
@@ -111,8 +116,8 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="bg-card/30 backdrop-blur-sm rounded-3xl p-8 border border-border/50 hover:border-primary/50 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
+            <div className="cosmic-glass rounded-3xl p-8 border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300">
+              <h3 className="text-2xl font-bold mb-6 text-white">Send me a message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -120,8 +125,8 @@ export function ContactSection() {
                     <motion.label
                       className={`absolute left-4 transition-all duration-300 pointer-events-none ${
                         focusedField === 'name' || formData.name
-                          ? 'top-2 text-xs text-primary'
-                          : 'top-4 text-base text-muted-foreground'
+                          ? 'top-2 text-xs text-yellow-400'
+                          : 'top-4 text-base text-white/60'
                       }`}
                       animate={{
                         y: focusedField === 'name' || formData.name ? -8 : 0,
@@ -136,8 +141,8 @@ export function ContactSection() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
-                      className={`h-14 bg-transparent border-2 transition-all duration-300 ${
-                        focusedField === 'name' ? 'border-primary glow' : 'border-border'
+                      className={`h-14 bg-transparent border-2 transition-all duration-300 text-white ${
+                        focusedField === 'name' ? 'border-yellow-500 cosmic-glow' : 'border-white/20'
                       }`}
                       required
                     />
@@ -147,8 +152,8 @@ export function ContactSection() {
                     <motion.label
                       className={`absolute left-4 transition-all duration-300 pointer-events-none ${
                         focusedField === 'email' || formData.email
-                          ? 'top-2 text-xs text-primary'
-                          : 'top-4 text-base text-muted-foreground'
+                          ? 'top-2 text-xs text-yellow-400'
+                          : 'top-4 text-base text-white/60'
                       }`}
                       animate={{
                         y: focusedField === 'email' || formData.email ? -8 : 0,
@@ -164,8 +169,8 @@ export function ContactSection() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
-                      className={`h-14 bg-transparent border-2 transition-all duration-300 ${
-                        focusedField === 'email' ? 'border-primary glow' : 'border-border'
+                      className={`h-14 bg-transparent border-2 transition-all duration-300 text-white ${
+                        focusedField === 'email' ? 'border-yellow-500 cosmic-glow' : 'border-white/20'
                       }`}
                       required
                     />
@@ -176,8 +181,8 @@ export function ContactSection() {
                   <motion.label
                     className={`absolute left-4 transition-all duration-300 pointer-events-none ${
                       focusedField === 'subject' || formData.subject
-                        ? 'top-2 text-xs text-primary'
-                        : 'top-4 text-base text-muted-foreground'
+                        ? 'top-2 text-xs text-yellow-400'
+                        : 'top-4 text-base text-white/60'
                     }`}
                     animate={{
                       y: focusedField === 'subject' || formData.subject ? -8 : 0,
@@ -192,8 +197,8 @@ export function ContactSection() {
                     onChange={handleChange}
                     onFocus={() => setFocusedField('subject')}
                     onBlur={() => setFocusedField(null)}
-                    className={`h-14 bg-transparent border-2 transition-all duration-300 ${
-                      focusedField === 'subject' ? 'border-primary glow' : 'border-border'
+                    className={`h-14 bg-transparent border-2 transition-all duration-300 text-white ${
+                      focusedField === 'subject' ? 'border-yellow-500 cosmic-glow' : 'border-white/20'
                     }`}
                     required
                   />
@@ -203,8 +208,8 @@ export function ContactSection() {
                   <motion.label
                     className={`absolute left-4 transition-all duration-300 pointer-events-none ${
                       focusedField === 'message' || formData.message
-                        ? 'top-2 text-xs text-primary'
-                        : 'top-4 text-base text-muted-foreground'
+                        ? 'top-2 text-xs text-yellow-400'
+                        : 'top-4 text-base text-white/60'
                     }`}
                     animate={{
                       y: focusedField === 'message' || formData.message ? -8 : 0,
@@ -219,8 +224,8 @@ export function ContactSection() {
                     onChange={handleChange}
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
-                    className={`min-h-32 bg-transparent border-2 transition-all duration-300 ${
-                      focusedField === 'message' ? 'border-primary glow' : 'border-border'
+                    className={`min-h-32 bg-transparent border-2 transition-all duration-300 text-white ${
+                      focusedField === 'message' ? 'border-yellow-500 cosmic-glow' : 'border-white/20'
                     }`}
                     required
                   />
@@ -233,7 +238,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300 glow interactive"
+                    className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 cosmic-glow interactive"
                     disabled={isSubmitted}
                   >
                     {isSubmitted ? (
@@ -265,8 +270,8 @@ export function ContactSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <h3 className="text-2xl font-bold mb-6 text-white">Get in touch</h3>
+              <p className="text-white/60 mb-8 leading-relaxed">
                 I'm always open to discussing new opportunities, creative projects, 
                 or just having a friendly chat about technology and design.
               </p>
@@ -276,18 +281,18 @@ export function ContactSection() {
                   <motion.a
                     key={info.label}
                     href={info.href}
-                    className="flex items-center space-x-4 p-4 bg-card/30 backdrop-blur-sm rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300 group interactive"
+                    className="flex items-center space-x-4 p-4 cosmic-glass rounded-2xl border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300 group interactive"
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                     whileHover={{ scale: 1.02, x: 10 }}
                   >
-                    <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
-                      <info.icon size={20} className="text-primary" />
+                    <div className="p-3 bg-yellow-500/20 rounded-full group-hover:bg-yellow-500/30 transition-colors">
+                      <info.icon size={20} className="text-yellow-400" />
                     </div>
                     <div>
-                      <p className="font-medium">{info.label}</p>
-                      <p className="text-muted-foreground">{info.value}</p>
+                      <p className="font-medium text-white">{info.label}</p>
+                      <p className="text-white/60">{info.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -296,20 +301,20 @@ export function ContactSection() {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">Follow me</h4>
+              <h4 className="text-lg font-semibold mb-4 text-white">Follow me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
-                    className="p-4 bg-card/30 backdrop-blur-sm rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300 group interactive"
+                    className="p-4 cosmic-glass rounded-2xl border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300 group interactive"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <social.icon size={20} className="text-primary group-hover:text-accent transition-colors" />
+                    <social.icon size={20} className="text-yellow-400 group-hover:text-orange-400 transition-colors" />
                   </motion.a>
                 ))}
               </div>
@@ -317,16 +322,16 @@ export function ContactSection() {
 
             {/* Call to Action */}
             <motion.div
-              className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 border border-primary/20"
+              className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-3xl p-8 border border-yellow-500/20"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <h4 className="text-xl font-bold mb-4">Ready to start a project?</h4>
-              <p className="text-muted-foreground mb-6">
+              <h4 className="text-xl font-bold mb-4 text-white">Ready to start a project?</h4>
+              <p className="text-white/60 mb-6">
                 Let's discuss your ideas and turn them into reality. I'm excited to hear from you!
               </p>
-              <Button variant="outline" className="interactive">
+              <Button variant="outline" className="interactive border-yellow-500/50 text-white hover:bg-yellow-500/10">
                 Schedule a Call
                 <motion.span
                   className="ml-2 inline-block"

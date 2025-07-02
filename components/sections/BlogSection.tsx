@@ -75,7 +75,12 @@ export function BlogSection() {
 
   return (
     <section id="blog" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+      {/* Cosmic Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-44 h-44 bg-magenta-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-2/3 left-1/4 w-28 h-28 bg-yellow-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -85,10 +90,10 @@ export function BlogSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Latest <span className="gradient-text">Insights</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            Latest <span className="cosmic-gradient-text">Insights</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             Thoughts, tutorials, and insights about web development, design, and technology
           </p>
         </motion.div>
@@ -100,7 +105,7 @@ export function BlogSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16"
         >
-          <div className="relative group bg-card/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-500 card-hover">
+          <div className="relative group cosmic-glass rounded-3xl overflow-hidden border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-500 cosmic-card-hover">
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="relative overflow-hidden">
                 <motion.img
@@ -113,24 +118,24 @@ export function BlogSection() {
               
               <div className="p-8 lg:p-12 flex flex-col justify-center">
                 <div className="flex items-center space-x-4 mb-4">
-                  <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
+                  <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">
                     Featured
                   </span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-sm text-white/60">
                     {blogPosts[0].category}
                   </span>
                 </div>
                 
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors">
                   {blogPosts[0].title}
                 </h3>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-white/60 mb-6 leading-relaxed">
                   {blogPosts[0].excerpt}
                 </p>
 
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                  <div className="flex items-center space-x-4 text-sm text-white/60">
                     <div className="flex items-center space-x-1">
                       <Calendar size={16} />
                       <span>{new Date(blogPosts[0].date).toLocaleDateString()}</span>
@@ -146,14 +151,14 @@ export function BlogSection() {
                   {blogPosts[0].tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-muted/50 rounded-full text-xs font-medium"
+                      className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white/80"
                     >
                       #{tag}
                     </span>
                   ))}
                 </div>
 
-                <Button className="w-fit interactive">
+                <Button className="w-fit interactive bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400">
                   Read Full Article
                   <ArrowRight size={16} className="ml-2" />
                 </Button>
@@ -183,7 +188,7 @@ export function BlogSection() {
             {[...blogPosts.slice(1), ...blogPosts.slice(1)].map((post, index) => (
               <motion.article
                 key={`${post.id}-${index}`}
-                className="group bg-card/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 card-hover interactive flex-shrink-0 w-80"
+                className="group cosmic-glass rounded-2xl overflow-hidden border border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300 cosmic-card-hover interactive flex-shrink-0 w-80"
                 onMouseEnter={() => setHoveredPost(post.id)}
                 onMouseLeave={() => setHoveredPost(null)}
                 whileHover={{ scale: 1.05, y: -10 }}
@@ -207,7 +212,7 @@ export function BlogSection() {
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center space-x-3 mb-3 text-xs text-muted-foreground">
+                  <div className="flex items-center space-x-3 mb-3 text-xs text-white/60">
                     <div className="flex items-center space-x-1">
                       <Calendar size={12} />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -218,11 +223,11 @@ export function BlogSection() {
                     </div>
                   </div>
 
-                  <h3 className="font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-bold mb-2 line-clamp-2 text-white group-hover:text-yellow-400 transition-colors">
                     {post.title}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                  <p className="text-sm text-white/60 mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
 
@@ -230,20 +235,20 @@ export function BlogSection() {
                     {post.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-muted/50 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-white/10 rounded text-xs font-medium text-white/80"
                       >
                         #{tag}
                       </span>
                     ))}
                     {post.tags.length > 2 && (
-                      <span className="px-2 py-1 bg-muted/50 rounded text-xs font-medium">
+                      <span className="px-2 py-1 bg-white/10 rounded text-xs font-medium text-white/80">
                         +{post.tags.length - 2}
                       </span>
                     )}
                   </div>
 
                   <motion.div
-                    className="flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="flex items-center text-sm font-medium text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     animate={hoveredPost === post.id ? { x: [0, 5, 0] } : {}}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
@@ -262,7 +267,7 @@ export function BlogSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <Button size="lg" variant="outline" className="interactive">
+          <Button size="lg" variant="outline" className="interactive border-yellow-500/50 text-white hover:bg-yellow-500/10">
             <Tag size={16} className="mr-2" />
             View All Posts
             <motion.span
