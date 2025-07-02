@@ -36,12 +36,29 @@ export function Footer() {
 
   return (
     <footer className="relative bg-background border-t border-border/50 overflow-hidden">
+      {/* Footer-specific Moving Stars */}
+      <div className="footer-stars">
+        {Array.from({ length: 100 }).map((_, i) => (
+          <div
+            key={i}
+            className="footer-star"
+            style={{
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 10}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
       
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full"
@@ -63,6 +80,33 @@ export function Footer() {
         ))}
       </div>
 
+      {/* Floating Planets in Footer */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-6 h-6 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32'][i % 4]}, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 20px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32'][i % 4]}`,
+            }}
+            animate={{
+              y: [0, -25, 0],
+              x: [0, 12, 0],
+              rotate: [0, 360],
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -75,7 +119,7 @@ export function Footer() {
               className="lg:col-span-1"
             >
               <motion.div
-                className="text-3xl font-bold gradient-text mb-4"
+                className="text-3xl font-bold cosmic-gradient-text mb-4"
                 whileHover={{ scale: 1.05 }}
               >
                 Alex Johnson

@@ -47,6 +47,23 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Section-specific Stars */}
+      <div className="section-stars">
+        {Array.from({ length: 500 }).map((_, i) => (
+          <div
+            key={i}
+            className="section-star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
+              animationDelay: `${Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Parallax Background */}
       <motion.div
         className="absolute inset-0"
@@ -58,6 +75,33 @@ export function HeroSection() {
         }}
         transition={{ type: 'spring', damping: 30 }}
       />
+
+      {/* Floating Planets */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-8 h-8 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 25px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}`,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              x: [0, 20, 0],
+              rotate: [0, 360],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 12 + Math.random() * 6,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Text Content */}
@@ -151,7 +195,7 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="profile-orbit cosmic-float">
+          <div className="profile-orbit">
             {/* Orbit Rings */}
             <div className="orbit-ring orbit-ring-1">
               <div className="orbit-moon moon-1" />
@@ -163,10 +207,10 @@ export function HeroSection() {
               <div className="orbit-moon moon-3" />
             </div>
 
-            {/* Profile Picture */}
+            {/* Profile Picture - Static but with animated border */}
             <motion.div
               className="profile-picture bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-6xl font-bold text-white"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', damping: 20 }}
             >
               AJ

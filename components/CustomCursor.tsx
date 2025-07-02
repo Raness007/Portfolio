@@ -38,19 +38,19 @@ export function CustomCursor() {
       <motion.div
         className={`cosmic-cursor ${isHovering ? 'hover' : ''}`}
         animate={{
-          x: mousePosition.x - 10,
-          y: mousePosition.y - 10,
+          x: mousePosition.x - 8,
+          y: mousePosition.y - 8,
         }}
-        transition={{ type: 'spring', damping: 50, stiffness: 800, mass: 0.1 }}
+        transition={{ type: 'spring', damping: 80, stiffness: 1200, mass: 0.05 }}
       />
       <motion.div
         className="cosmic-cursor-trail"
         animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
+          x: mousePosition.x - 16,
+          y: mousePosition.y - 16,
+          scale: isHovering ? 1.8 : 1,
         }}
-        transition={{ type: 'spring', damping: 30, stiffness: 400, mass: 0.2 }}
+        transition={{ type: 'spring', damping: 60, stiffness: 800, mass: 0.1 }}
       />
     </>
   );

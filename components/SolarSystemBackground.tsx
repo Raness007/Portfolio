@@ -8,26 +8,26 @@ export function SolarSystemBackground() {
   const [shootingStars, setShootingStars] = useState<Array<{ id: number; delay: number }>>([]);
 
   useEffect(() => {
-    // Generate random stars
-    const starArray = Array.from({ length: 200 }, (_, i) => ({
+    // Generate millions of random stars
+    const starArray = Array.from({ length: 1000 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
+      size: Math.random() * 4 + 1,
     }));
     setStars(starArray);
 
-    // Generate shooting stars
-    const shootingStarArray = Array.from({ length: 5 }, (_, i) => ({
+    // Generate more shooting stars
+    const shootingStarArray = Array.from({ length: 15 }, (_, i) => ({
       id: i,
-      delay: Math.random() * 10,
+      delay: Math.random() * 20,
     }));
     setShootingStars(shootingStarArray);
   }, []);
 
   return (
     <div className="solar-system-bg">
-      {/* Stars */}
+      {/* Enhanced Stars Field */}
       <div className="stars">
         {stars.map((star) => (
           <div
@@ -38,33 +38,35 @@ export function SolarSystemBackground() {
               top: `${star.y}%`,
               width: `${star.size}px`,
               height: `${star.size}px`,
-              animationDelay: `${Math.random() * 3}s`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Shooting Stars */}
+      {/* Enhanced Shooting Stars */}
       {shootingStars.map((shootingStar) => (
         <div
           key={shootingStar.id}
           className="shooting-star"
           style={{
-            top: `${Math.random() * 50}%`,
-            left: `${Math.random() * 50}%`,
+            top: `${Math.random() * 80}%`,
+            left: `${Math.random() * 80}%`,
             animationDelay: `${shootingStar.delay}s`,
+            animationDuration: `${4 + Math.random() * 3}s`,
           }}
         />
       ))}
 
-      {/* Planets */}
+      {/* Enhanced Planets with Glow */}
       <motion.div
         className="planet sun"
         animate={{
           rotate: 360,
         }}
         transition={{
-          duration: 20,
+          duration: 30,
           repeat: Infinity,
           ease: "linear",
         }}
@@ -77,21 +79,29 @@ export function SolarSystemBackground() {
       <div className="planet jupiter" />
       <div className="planet saturn" />
 
-      {/* Nebula Effects */}
+      {/* Enhanced Moons */}
+      <div className="moon moon-1" />
+      <div className="moon moon-2" />
+      <div className="moon moon-3" />
+      <div className="moon moon-4" />
+      <div className="moon moon-5" />
+
+      {/* Enhanced Nebula Effects */}
       <div className="nebula nebula-1" />
       <div className="nebula nebula-2" />
       <div className="nebula nebula-3" />
+      <div className="nebula nebula-4" />
 
-      {/* Cosmic Particles */}
+      {/* Enhanced Cosmic Particles */}
       <div className="cosmic-particles">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 100 }).map((_, i) => (
           <div
             key={i}
             className="cosmic-particle"
             style={{
               left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${8 + Math.random() * 4}s`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${10 + Math.random() * 8}s`,
             }}
           />
         ))}

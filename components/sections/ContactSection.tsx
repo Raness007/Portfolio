@@ -62,16 +62,58 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Section-specific Stars */}
+      <div className="section-stars">
+        {Array.from({ length: 300 }).map((_, i) => (
+          <div
+            key={i}
+            className="section-star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Cosmic Background */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-52 h-52 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         <div className="absolute top-1/2 right-1/4 w-36 h-36 bg-pink-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+        
+        {/* Floating Planets */}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-6 h-6 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500', '#9370DB'][i % 6]}, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 20px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500', '#9370DB'][i % 6]}`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 15, 0],
+              rotate: [0, 360],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 5,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
       </div>
       
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-yellow-400/30 rounded-full"
@@ -260,6 +302,31 @@ export function ContactSection() {
                 </motion.div>
               </form>
             </div>
+
+            {/* 3D Model Animation below the form */}
+            <motion.div
+              className="flex justify-center mt-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              <div className="cosmic-3d-model flex items-center justify-center">
+                <motion.div
+                  className="text-4xl font-bold text-white"
+                  animate={{
+                    rotateY: [0, 360],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
+                  🚀
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Info */}
