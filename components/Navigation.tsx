@@ -25,11 +25,11 @@ export function Navigation() {
 
   return (
     <>
-      {/* Desktop Navigation - Centered Top */}
+      {/* Desktop Navigation - Perfect Middle Top */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 hidden md:block ${
+        className={`fixed top-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 hidden md:block ${
           scrollY > 50 ? 'cosmic-glass backdrop-blur-md' : 'bg-transparent'
         }`}
       >
@@ -61,11 +61,11 @@ export function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation - Centered Bottom */}
+      {/* Mobile Navigation - Perfect Middle Bottom */}
       <motion.nav
         initial={{ y: 100 }}
         animate={{ y: 0 }}
-        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
       >
         <div className="cosmic-glass backdrop-blur-md rounded-full px-6 py-3 border border-yellow-500/30">
           <div className="flex items-center space-x-1">

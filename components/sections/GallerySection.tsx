@@ -101,11 +101,57 @@ export function GallerySection() {
 
   return (
     <section id="gallery" className="py-20 relative overflow-hidden">
+      {/* Section-specific Stars */}
+      <div className="section-stars">
+        {Array.from({ length: 300 }).map((_, i) => (
+          <div
+            key={i}
+            className="section-star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Cosmic Background */}
       <div className="absolute inset-0">
         <div className="absolute top-40 right-10 w-48 h-48 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-10 left-10 w-36 h-36 bg-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-1/4 left-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }} />
+        
+        {/* Floating Planets */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-5 h-5 rounded-full"
+            style={{
+              background: `linear-gradient(45deg, ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32'][i % 4]}, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 18px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32'][i % 4]}`,
+            }}
+            animate={{
+              y: [0, -22, 0],
+              x: [0, 11, 0],
+              rotate: [0, 360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 9 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+
+        {/* Cosmic Vortex */}
+        <div className="cosmic-vortex" style={{ top: '10%', left: '80%' }} />
+        <div className="cosmic-vortex" style={{ bottom: '20%', right: '75%', animationDelay: '4s' }} />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

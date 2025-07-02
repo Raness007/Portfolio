@@ -49,7 +49,7 @@ export function HeroSection() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Section-specific Stars */}
       <div className="section-stars">
-        {Array.from({ length: 500 }).map((_, i) => (
+        {Array.from({ length: 800 }).map((_, i) => (
           <div
             key={i}
             className="section-star"
@@ -64,21 +64,51 @@ export function HeroSection() {
         ))}
       </div>
 
-      {/* Parallax Background */}
+      {/* Gentle Parallax Background */}
       <motion.div
         className="absolute inset-0"
         style={{
           background: 'radial-gradient(circle at 50% 50%, rgba(253, 184, 19, 0.1) 0%, transparent 50%)',
         }}
         animate={{
-          backgroundPosition: `${mousePosition.x / 50}px ${mousePosition.y / 50}px`,
+          backgroundPosition: `${mousePosition.x / 200}px ${mousePosition.y / 200}px`,
         }}
-        transition={{ type: 'spring', damping: 30 }}
+        transition={{ type: 'spring', damping: 50, stiffness: 100 }}
       />
+
+      {/* Cosmic Vortex Effects */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="cosmic-vortex"
+            style={{
+              left: `${20 + i * 30}%`,
+              top: `${20 + i * 20}%`,
+              animationDelay: `${i * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Cosmic Dust Clouds */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <div
+            key={i}
+            className="cosmic-dust"
+            style={{
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 10}s`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Floating Planets */}
       <div className="absolute inset-0">
-        {Array.from({ length: 15 }).map((_, i) => (
+        {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-8 h-8 rounded-full"
@@ -89,15 +119,62 @@ export function HeroSection() {
               boxShadow: `0 0 25px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}`,
             }}
             animate={{
-              y: [0, -40, 0],
-              x: [0, 20, 0],
+              y: [0, -30, 0],
+              x: [0, 15, 0],
               rotate: [0, 360],
-              scale: [1, 1.3, 1],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 12 + Math.random() * 6,
+              duration: 15 + Math.random() * 10,
               repeat: Infinity,
-              delay: Math.random() * 4,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Energy Waves */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div
+            key={i}
+            className="energy-wave"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 1.2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Constellation Lines */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={i}
+            className="constellation-line"
+            style={{
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 80}%`,
+              width: `${50 + Math.random() * 100}px`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+              animationDelay: `${Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Cosmic Lightning */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div
+            key={i}
+            className="cosmic-lightning"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 80}%`,
+              animationDelay: `${Math.random() * 3}s`,
             }}
           />
         ))}
@@ -195,7 +272,7 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="profile-orbit">
+          <div className="profile-orbit cosmic-float">
             {/* Orbit Rings */}
             <div className="orbit-ring orbit-ring-1">
               <div className="orbit-moon moon-1" />

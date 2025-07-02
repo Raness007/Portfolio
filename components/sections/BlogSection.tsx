@@ -75,11 +75,65 @@ export function BlogSection() {
 
   return (
     <section id="blog" className="py-20 relative overflow-hidden">
+      {/* Section-specific Stars */}
+      <div className="section-stars">
+        {Array.from({ length: 350 }).map((_, i) => (
+          <div
+            key={i}
+            className="section-star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Cosmic Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-44 h-44 bg-magenta-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         <div className="absolute top-2/3 left-1/4 w-28 h-28 bg-yellow-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+        
+        {/* Floating Planets */}
+        {Array.from({ length: 10 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-4 h-4 rounded-full"
+            style={{
+              background: `linear-gradient(45deg, ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 15px ${['#FFD700', '#87CEEB', '#FF69B4', '#32CD32', '#FF4500'][i % 5]}`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+
+        {/* Energy Waves */}
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="energy-wave"
+            style={{
+              left: `${20 + i * 30}%`,
+              top: `${30 + i * 20}%`,
+              animationDelay: `${i * 2}s`,
+            }}
+          />
+        ))}
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
